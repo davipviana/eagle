@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-import TradeConfirmationForm from './modules/trade-confirmation/components/TradeConfirmationForm';
+import './app.css';
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload updated.
         </p>
-        <TradeConfirmationForm />
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -26,3 +24,4 @@ function App() {
 }
 
 export default App;
+
