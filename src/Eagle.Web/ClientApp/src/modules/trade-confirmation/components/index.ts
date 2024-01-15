@@ -1,0 +1,1 @@
+export {default as TradeConfirmationForm} from './trade-confirmation-form/trade-confirmation-form';
