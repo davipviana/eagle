@@ -1,10 +1,16 @@
 import React from 'react';
+import { AppBar } from 'shared/components/layout';
 import logo from './logo.svg';
 import './app.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 function App() {
   return (
     <div className="App">
+      <AppBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
