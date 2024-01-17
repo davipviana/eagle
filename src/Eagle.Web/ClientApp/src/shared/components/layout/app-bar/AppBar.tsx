@@ -1,9 +1,11 @@
 import React from 'react';
 import {
     AppBar as MuiAppBar,
-    AppBarProps as MuiAppBarProps
+    AppBarProps as MuiAppBarProps,
+    Toolbar
 } from '@mui/material';
 import { HideOnScroll } from '../hide-on-scroll/HideOnScroll';
+import { MenuToggleButton } from './MenuToggleButton';
 
 export interface AppBarProps extends Omit<MuiAppBarProps, 'title'> {
     alwaysOn?: boolean;
@@ -25,7 +27,9 @@ export const AppBar: React.FC<AppBarProps> = React.memo(props => {
             color={color}
             {...rest}
         >
-            <div>teste</div>
+            <Toolbar>
+                <MenuToggleButton />
+            </Toolbar>
         </MuiAppBar>
     </Container>;
 });
