@@ -3,16 +3,17 @@ import { styled } from "@mui/material/styles";
 import {
   AppBar as MuiAppBar,
   AppBarProps as MuiAppBarProps,
-  Toolbar
+  Toolbar,
 } from "@mui/material";
 
-export interface AppBarProps extends Omit<MuiAppBarProps, 'title'> {
+export interface AppBarProps extends Omit<MuiAppBarProps, "title"> {
   sidebarOpen?: boolean;
   sidebarWidth?: number;
 }
 
 const StyledAppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => (prop !== "sidebarOpen" && prop !== "sidebarWidth"),
+  shouldForwardProp: (prop) =>
+    prop !== "sidebarOpen" && prop !== "sidebarWidth",
 })<AppBarProps>(({ theme, sidebarOpen, sidebarWidth }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
@@ -30,12 +31,10 @@ const StyledAppBar = styled(MuiAppBar, {
 }));
 
 export const AppBar: React.FC<AppBarProps> = (props) => {
-    const { children } = props;
+  const { children } = props;
   return (
     <StyledAppBar {...props}>
-        <Toolbar sx={{ pr: '24px' }}>
-            {children}
-        </Toolbar>
+      <Toolbar sx={{ pr: "24px" }}>{children}</Toolbar>
     </StyledAppBar>
   );
 };

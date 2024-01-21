@@ -1,4 +1,3 @@
-import * as React from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useSidebarState } from "shared/layout";
