@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppLayout } from 'shared/layout';
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
     <div className="App">
       <AppLayout />
@@ -10,4 +10,3 @@ function App() {
 }
 
 export default App;
-
