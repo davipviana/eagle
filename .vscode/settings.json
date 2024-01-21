@@ -3,5 +3,7 @@
         "**/bin": true,
         "**/node_modules/": true,
         "**/obj": true
-    }
+    },
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative"
 }
