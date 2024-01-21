@@ -6,23 +6,22 @@ import {
   Toolbar
 } from "@mui/material";
 
-const drawerWidth: number = 240;
-
 export interface AppBarProps extends Omit<MuiAppBarProps, 'title'> {
   sidebarOpen?: boolean;
+  sidebarWidth?: number;
 }
 
 const StyledAppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, sidebarOpen }) => ({
+  shouldForwardProp: (prop) => prop !== "sidebarOpen",
+})<AppBarProps>(({ theme, sidebarOpen, sidebarWidth }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(sidebarOpen && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: sidebarWidth,
+    width: `calc(100% - ${sidebarWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,

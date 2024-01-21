@@ -3,22 +3,31 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   Box,
   CssBaseline,
+  List,
+  ListItemButton,
+  ListItemText,
   Typography
 } from '@mui/material';
 import { useSidebarState } from 'shared/layout';
+import { Module } from 'shared/types';
 import { AppBar } from '../app-bar/AppBar';
-import { SidebarToggleButton, Sidebar } from '../sidebar'
+import { SidebarToggleButton, Sidebar } from '../sidebar';
 
 const theme = createTheme();
+const sidebarWidth: number = 240;
 
-export const AppLayout = () => {
+interface AppLayoutProps {
+  modules: [Module];
+}
+
+export const AppLayout = ({modules}: AppLayoutProps) => {
   const [sidebarOpen] = useSidebarState();
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar sidebarOpen={sidebarOpen}>
+        <AppBar sidebarOpen={sidebarOpen} sidebarWidth={sidebarWidth}>
           <SidebarToggleButton />
           <Typography
               component="h1"
@@ -30,7 +39,13 @@ export const AppLayout = () => {
               Eagle
             </Typography>
         </AppBar>
-        <Sidebar/>
+        <Sidebar sidebarWidth={sidebarWidth}>
+          <List component="nav">
+            {modules.map((m) => (<ListItemButton>
+              <ListItemText key={m.name} primary={m.name} />
+              </ListItemButton>))}
+          </List>
+        </Sidebar>
       </Box>
     </ThemeProvider>
   );

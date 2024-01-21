@@ -1,15 +1,53 @@
 import React from 'react';
+import { styled } from "@mui/material/styles";
 import {
-    Drawer,
+    Drawer as MuiDrawer,
+    DrawerProps as MuiDrawerProps,
     IconButton,
     Toolbar
 } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { ChevronLeft } from '@mui/icons-material';
 import { useSidebarState } from "shared/layout";
-export const Sidebar = (props: React.PropsWithChildren) => {
+
+interface SidebarProps {
+  children?: React.ReactNode;
+  sidebarWidth: number
+}
+
+interface DrawerProps extends MuiDrawerProps {
+  drawerWidth: number;
+}
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })<DrawerProps>(
+  ({ theme, open, drawerWidth }) => ({
+    '& .MuiDrawer-paper': {
+      position: 'relative',
+      whiteSpace: 'nowrap',
+      width: drawerWidth,
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+      boxSizing: 'border-box',
+      ...(!open && {
+        overflowX: 'hidden',
+        transition: theme.transitions.create('width', {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+        }),
+        width: 0,
+        [theme.breakpoints.up('sm')]: {
+          width: 0,
+        },
+      }),
+    },
+  }),
+);
+
+export const Sidebar = ({ children, sidebarWidth }: SidebarProps) => {
     const [sidebarOpen, setSidebarOpen] = useSidebarState();
     return (
-        <Drawer variant="permanent" open={sidebarOpen}>
+        <Drawer variant="permanent" open={sidebarOpen} drawerWidth={sidebarWidth}>
           <Toolbar
             sx={{
               display: 'flex',
@@ -19,9 +57,10 @@ export const Sidebar = (props: React.PropsWithChildren) => {
             }}
           >
             <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
-              <ChevronLeftIcon />
+              <ChevronLeft />
             </IconButton>
           </Toolbar>
+          {children}
         </Drawer>
     );
 };
