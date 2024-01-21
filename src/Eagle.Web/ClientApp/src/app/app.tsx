@@ -1,10 +1,11 @@
 import React from 'react';
 import { AppLayout } from 'shared/layout';
+import modules from 'modules';
 
-const App: React.FC = (): JSX.Element => {
+const App = (): JSX.Element => {
   return (
     <div className="App">
-      <AppLayout />
+      <AppLayout modules={modules} />
     </div>
   );
 }
