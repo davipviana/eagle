@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   Box,
@@ -23,7 +24,8 @@ interface AppLayoutProps {
 }
 
 export const AppLayout = ({ children, modules }: AppLayoutProps) => {
-  const [sidebarOpen] = useSidebarState();
+  const [sidebarOpen, setSidebarOpen] = useSidebarState();
+  const navigate = useNavigate();
 
   return (
     <ThemeProvider theme={theme}>
@@ -44,7 +46,13 @@ export const AppLayout = ({ children, modules }: AppLayoutProps) => {
         <Sidebar sidebarWidth={sidebarWidth}>
           <List component="nav">
             {modules.map((m) => (
-              <ListItemButton key={m.name}>
+              <ListItemButton
+                key={m.name}
+                onClick={() => {
+                  setSidebarOpen(!sidebarOpen);
+                  navigate(m.path);
+                }}
+              >
                 <ListItemText primary={m.name} />
               </ListItemButton>
             ))}

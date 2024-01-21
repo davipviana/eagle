@@ -8,6 +8,7 @@ const App = (): JSX.Element => {
     <div className="App">
       <AppLayout modules={modules}>
         <Routes>
+          <Route path="/" element={<div></div>}/>
           {modules.map(({name, path, component: Component}: Module) => (
           <Route key={name} path={path} element={<Component />}/>))}
         </Routes>
