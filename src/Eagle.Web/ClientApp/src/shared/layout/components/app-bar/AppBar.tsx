@@ -12,7 +12,7 @@ export interface AppBarProps extends Omit<MuiAppBarProps, 'title'> {
 }
 
 const StyledAppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "sidebarOpen",
+  shouldForwardProp: (prop) => (prop !== "sidebarOpen" && prop !== "sidebarWidth"),
 })<AppBarProps>(({ theme, sidebarOpen, sidebarWidth }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {

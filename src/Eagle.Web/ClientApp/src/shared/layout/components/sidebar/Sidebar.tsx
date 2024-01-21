@@ -19,7 +19,8 @@ interface DrawerProps extends MuiDrawerProps {
   drawerWidth: number;
 }
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })<DrawerProps>(
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => (prop !== 'open' && prop !== 'drawerWidth')}
+)<DrawerProps>(
   ({ theme, open, drawerWidth }) => ({
     '& .MuiDrawer-paper': {
       position: 'relative',

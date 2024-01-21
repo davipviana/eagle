@@ -1,4 +1,5 @@
 export type Module = {
     name: string;
-    routes: [string];
+    path: string;
+    component: () => JSX.Element;
 }

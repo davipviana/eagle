@@ -6,6 +6,7 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  Toolbar,
   Typography
 } from '@mui/material';
 import { useSidebarState } from 'shared/layout';
@@ -17,10 +18,11 @@ const theme = createTheme();
 const sidebarWidth: number = 240;
 
 interface AppLayoutProps {
+  children?: React.ReactNode;
   modules: [Module];
 }
 
-export const AppLayout = ({modules}: AppLayoutProps) => {
+export const AppLayout = ({children, modules}: AppLayoutProps) => {
   const [sidebarOpen] = useSidebarState();
 
   return (
@@ -41,8 +43,8 @@ export const AppLayout = ({modules}: AppLayoutProps) => {
         </AppBar>
         <Sidebar sidebarWidth={sidebarWidth}>
           <List component="nav">
-            {modules.map((m) => (<ListItemButton>
-              <ListItemText key={m.name} primary={m.name} />
+            {modules.map((m) => (<ListItemButton key={m.name}>
+              <ListItemText primary={m.name} />
               </ListItemButton>))}
           </List>
         </Sidebar>
@@ -56,8 +58,10 @@ export const AppLayout = ({modules}: AppLayoutProps) => {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
-          }}
-        ></Box>
+          }}>
+            <Toolbar />
+            {children}
+          </Box>
       </Box>
     </ThemeProvider>
   );
