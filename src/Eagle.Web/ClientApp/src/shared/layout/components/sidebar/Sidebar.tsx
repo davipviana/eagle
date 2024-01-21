@@ -1,10 +1,11 @@
 import React from 'react';
 import { styled } from "@mui/material/styles";
 import {
-    Drawer as MuiDrawer,
-    DrawerProps as MuiDrawerProps,
-    IconButton,
-    Toolbar
+  Divider,
+  Drawer as MuiDrawer,
+  DrawerProps as MuiDrawerProps,
+  IconButton,
+  Toolbar
 } from '@mui/material';
 import { ChevronLeft } from '@mui/icons-material';
 import { useSidebarState } from "shared/layout";
@@ -60,6 +61,7 @@ export const Sidebar = ({ children, sidebarWidth }: SidebarProps) => {
               <ChevronLeft />
             </IconButton>
           </Toolbar>
+          <Divider />
           {children}
         </Drawer>
     );
