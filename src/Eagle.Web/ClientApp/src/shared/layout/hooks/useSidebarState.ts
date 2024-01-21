@@ -1,5 +1,4 @@
 import { useStore } from 'shared/store';
-import { useMediaQuery, Theme } from '@mui/material';
 
 /**
  * A hook that returns the sidebar open state and a function to toggle it.
